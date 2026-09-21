@@ -1,20 +1,24 @@
 import express from "express";
 import morgan from "morgan";
+import createError from "http-errors";
 
 const host = "localhost";
 const port = 8000;
 
 const app = express();
+app.set("view engine", "ejs");
 if (app.get("env") === "development") app.use(morgan("dev"));
 
 app.use(express.static("static"));
 
 app.get("/random/:nb", async function (request, response, next) {
-  const length = request.params.nb;
-  const contents = Array.from({ length })
-    .map((_) => `<li>${Math.floor(100 * Math.random())}</li>`)
-    .join("\n");
-  return response.send(`<html><ul>${contents}</ul></html>`);
+  const length = Number.parseInt(request.params.nb, 10);
+  if (Number.isNaN(length)) {
+    return next(createError(400));
+  }
+  const numbers = Array.from({ length }).map((_) => Math.floor(100 * Math.random()));
+  const welcome = "Bienvenue sur la page random";
+  return response.render("random", { numbers, welcome });
 });
 
 const server = app.listen(port, host);
