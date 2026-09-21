@@ -81,6 +81,16 @@ Question 2.4 quand l’événement listening est-il déclenché ?
 L'événement listening est déclenché quand le serveur a fini de s'attacher à l'adresse et au port, c'est-à-dire quand il est prêt à accepter des connexions
 listen() est asynchrone, donc dans la console le message File ... executed. s'affiche avant HTTP listening on http://::1:8000 with mode 'development'
 
+Question 2.5 indiquer quelle est l’option (activée par défaut) qui redirige / vers /index.html ?
+C'est l'option index de express.static. Sa valeur par défaut est "index.html". Quand la requête vise un dossier (ici /), le fichier index.html de ce dossier est affiché.
+
+Question 2.6 visiter la page d’accueil puis rafraichir (Ctrl+R) et ensuite forcer le rafraichissement (Ctrl+Shift+R). Quels sont les codes HTTP sur le fichier style.css ? Justifier.
+Lors du rafraichissement (Ctrl+R), le status de style.css est 304 Not Modified
+Lors du rafraichissement forcé (Ctrl+Shift+R), le status est 200 OK
+
+
+
+
 
 
 
