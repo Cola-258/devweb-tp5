@@ -5,6 +5,7 @@ const host = "localhost";
 const port = 8000;
 
 async function requestListener(_request, response) {
+  console.log("NODE_ENV =", process.env.NODE_ENV);
   try {
     const contents = await fs.readFile("index.html", "utf8");
     response.setHeader("Content-Type", "text/html");

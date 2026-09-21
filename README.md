@@ -24,3 +24,23 @@ Error: ENOENT: no such file or directory, open 'C:\Users\ct_no\OneDrive\Document
   path: 'C:\\Users\\ct_no\\OneDrive\\Documents\\devweb-tp5\\index.html'
 }
 
+Question 1.5 donner le code de requestListener() modifié avec gestion d’erreur en async/await.
+async function requestListener(_request, response) {
+  try {
+    const contents = await fs.readFile("index.html", "utf8");
+    response.setHeader("Content-Type", "text/html");
+    response.writeHead(200);
+    return response.end(contents);
+  } catch (error) {
+    console.error(error);
+    response.writeHead(500);
+    return response.end("<html><p>500: INTERNAL SERVER ERROR</p></html>");
+  }
+}
+
+Question 1.6 indiquer ce que cette commande a modifié dans votre projet.
+Les deux commandes modifient le projet de trois façons :
+- package.json est modifié. cross-env est ajouté dans dependencies (option --save) et nodemon dans devDependencies (option --save-dev), avec leur version.
+- Le fichier package-lock.json est créé. Il fige les versions exactes de toutes les dépendances.
+- Le dossier node_modules/ est créé. Il contient les paquets installés et leurs dépendances.
+
