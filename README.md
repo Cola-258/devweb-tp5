@@ -88,7 +88,10 @@ Question 2.6 visiter la page d’accueil puis rafraichir (Ctrl+R) et ensuite for
 Lors du rafraichissement (Ctrl+R), le status de style.css est 304 Not Modified
 Lors du rafraichissement forcé (Ctrl+Shift+R), le status est 200 OK
 
-
+Question 2.7 
+Oui il y a bien un changement :
+En mode development, la page d'erreur affiche le code, le message et la pile d'appels
+En mode production En mode production, la page n'affiche que le code et le message
 
 
 
